@@ -10,10 +10,11 @@ const bot = new TeleBot({
     }
 });
 
-const WELCOME_TEXT = "Добро пожаловать!";
+const WELCOME_TEXT = `Исәнмесез! Әйдәгез, татар телен өйрәник !
+Здравствуйте! Давайте изучать татарский язык !`;
 
 const replyMarkup = {
-    inlineKeyboard: [
+    inline_keyboard: [
         [
             { text: 'В тренажер', web_app: { url: 'https://tatar-tele.vercel.app' } },
         ],
