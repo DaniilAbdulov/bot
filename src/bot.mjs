@@ -12,22 +12,20 @@ const bot = new TeleBot({
 
 const WELCOME_TEXT = "Добро пожаловать!";
 
-const options = {
-    replyMarkup: JSON.stringify({
-        inline_keyboard: [
-            [
-                { text: 'В тренажер', web_app: { url: 'https://tatar-tele.vercel.app' } },
-            ],
-            [
-                { text: 'Новостной канал', url: 'https://t.me/tatarteleteacher' },
-            ]
+const replyMarkup = {
+    inlineKeyboard: [
+        [
+            { text: 'В тренажер', web_app: { url: 'https://tatar-tele.vercel.app' } },
+        ],
+        [
+            { text: 'Новостной канал', url: 'https://t.me/tatarteleteacher' },
         ]
-    })
-};
+    ]
+}
 
 bot.on('/start', (msg) => {
     const chatId = msg.chat.id;
-    return bot.sendMessage(chatId, WELCOME_TEXT, options);
+    return bot.sendMessage(chatId, WELCOME_TEXT, {replyMarkup});
 });
 
 bot.on('text', (msg) => {
