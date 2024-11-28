@@ -1,6 +1,6 @@
 import TeleBot from "telebot"
 
-const bot = new TeleBot(process.env.TELEGRAM_BOT_TOKEN)
+const bot = new TeleBot('7943845483:AAE1MoK14TFXMiaKP52HnE9ckqMfR76_om0')
 
 const options = {
     reply_markup: JSON.stringify({
