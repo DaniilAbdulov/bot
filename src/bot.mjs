@@ -10,6 +10,8 @@ const bot = new TeleBot({
     }
 });
 
+const defaultCommands = ['/start', '/help'];
+
 const WELCOME_TEXT = `Исәнмесез! Әйдәгез, татар телен өйрәник !
 Здравствуйте! Давайте изучать татарский язык !`;
 
@@ -24,16 +26,25 @@ const replyMarkup = {
     ]
 }
 
-bot.on('/start', (msg) => {
+bot.on('/start', async(msg) => {
     const chatId = msg.chat.id;
+
+    await bot.sendPhoto(chatId, 'https://cdn2.combot.org/tatarskyshp_by_fstikbot/webp/0xf09f918b.webp');
+
     return bot.sendMessage(chatId, WELCOME_TEXT, {replyMarkup});
+});
+
+bot.on('/help', async(msg) => {
+    const chatId = msg.chat.id;
+
+    return bot.sendMessage(chatId, `Для просьб и обращений просьба писать сюда https://t.me/unnamednonamee`);
 });
 
 bot.on('text', (msg) => {
     const text = msg.text;
     const chatId = msg.chat.id;
 
-    if (text === '/start') return;
+    if (defaultCommands.includes(text)) return;
 
     return bot.sendMessage(chatId, 'Мин сине анламатым');
 });
